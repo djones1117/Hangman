@@ -84,6 +84,13 @@ function checkWin() {
     }
   }
 
+  // Function to check if the player has lost
+function checkLoss() {
+    if (guessesRemaining === 0) {
+      console.log('Game over! You have run out of guesses.');
+    }
+  }
+//note to self. Delete console.logs after render win/loss message works
 
   // Function to update the word display with correct guesses
 function updateWordDisplay() {
