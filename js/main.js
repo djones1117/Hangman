@@ -23,8 +23,12 @@ initGame();
   
  // Function to initialize the game
 function initGame() {
+    correctGuesses = [];
+    incorrectGuesses = [];
+    guessesRemaining = MAX_GUESSES;
     displayBlanks();
     updateGuessesRemaining();
+    messageElement.textContent = '';
     playAgainButton.classList.add('hidden');
     keyboard.addEventListener('click', handleGuess);
   }
