@@ -11,6 +11,7 @@ let guessesRemaining = MAX_GUESSES
   const wordDisplay = document.getElementById('WordDisplay');
   const keyboard = document.getElementById('Keyboard');
   const messageElement = document.getElementById('message');
+  const guessesRemainingElement = document.getElementById('guessesRemaining');
   /*----- event listeners -----*/
 
 
@@ -22,6 +23,7 @@ initGame();
  // Function to initialize the game
 function initGame() {
     displayBlanks();
+    updateGuessesRemaining();
     keyboard.addEventListener('click', handleGuess);
   }
   
@@ -70,6 +72,7 @@ function handleGuess(event) {
   // Function to update the remaining guesses
 function updateGuessesRemaining() {
     guessesRemaining--;
+    guessesRemainingElement.textContent = `Guesses Remaining: ${guessesRemaining}`;
     if (guessesRemaining === 0) {
       displayLossMessage();
     }
