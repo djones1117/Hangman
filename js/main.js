@@ -12,9 +12,10 @@ let guessesRemaining = MAX_GUESSES
   const keyboard = document.getElementById('Keyboard');
   const messageElement = document.getElementById('message');
   const guessesRemainingElement = document.getElementById('guessesRemaining');
+  const playAgainButton = document.getElementById('playAgainButton');
   /*----- event listeners -----*/
-
-
+  keyboard.addEventListener('click', handleGuess);
+  playAgainButton.addEventListener('click', resetGame);
   /*----- functions -----*/
   // Initialize the game
 initGame();
@@ -24,6 +25,7 @@ initGame();
 function initGame() {
     displayBlanks();
     updateGuessesRemaining();
+    playAgainButton.classList.add('hidden');
     keyboard.addEventListener('click', handleGuess);
   }
   
@@ -81,11 +83,13 @@ function updateGuessesRemaining() {
 // Function to display a win message
 function displayWinMessage() {
     messageElement.textContent = 'Congratulations! You have won the game!';
+    playAgainButton.classList.remove('hidden');
   }
   
   // Function to display a loss message
   function displayLossMessage() {
     messageElement.textContent = 'Game over! You have run out of guesses.';
+    playAgainButton.classList.remove('hidden');
   }
 
 
@@ -125,4 +129,17 @@ function isAlpha(ch) {
     return /^[A-Z]$/i.test(ch);
   }
 
-  
+  //function that resets the game after a winner or loser has been returned.
+  function resetGame() {
+    correctGuesses = [];
+    incorrectGuesses = [];
+    guessesRemaining = MAX_GUESSES;
+    updateWordDisplay();
+    updateGuessesRemaining();
+    messageElement.textContent = '';
+    playAgainButton.classList.add('hidden');
+    keyboard.querySelectorAll('div').forEach((div) => {
+      div.classList.remove('disabled');
+    });
+    initGame();
+  }

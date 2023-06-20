@@ -92,4 +92,6 @@ header {
         font-size: 18px;
         color: black;
       }
-        
+      .hidden {
+        display: none;
+      }      
