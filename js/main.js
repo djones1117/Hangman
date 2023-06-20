@@ -10,6 +10,7 @@ let guessesRemaining = MAX_GUESSES
   /*----- cached elements  -----*/
   const wordDisplay = document.getElementById('WordDisplay');
   const keyboard = document.getElementById('Keyboard');
+  const messageElement = document.getElementById('message');
   /*----- event listeners -----*/
 
 
@@ -91,6 +92,8 @@ function checkLoss() {
     }
   }
 //note to self. Delete console.logs after render win/loss message works
+
+  
 
   // Function to update the word display with correct guesses
 function updateWordDisplay() {
