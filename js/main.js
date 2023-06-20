@@ -66,6 +66,15 @@ function handleGuess(event) {
   }
   //Finally, the clicked element's class is updated by adding the 'disabled' class. This class is used for styling purposes, typically to visually indicate that the letter has been guessed.
   
+  // Function to update the remaining guesses
+function updateGuessesRemaining() {
+    guessesRemaining--;
+    if (guessesRemaining === 0) {
+      console.log('Game over! You have run out of guesses.');
+    
+    }
+}  
+
   // Function to check if the user has won
 function checkWin() {
     const wordArray = Array.from(WORD);
