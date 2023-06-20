@@ -6,6 +6,7 @@ const MAX_GUESSES = 7;    //maximum number of guesses allowed.
 let correctGuesses = [];   //array that stores correctly guessed letters
 let incorrectGuesses = []; //array that stores incorrectly guessed letters
 let guessesRemaining = MAX_GUESSES 
+let isGameOver = false;    // Game status flag. Added to stop guesses from registering after game resets
 
   /*----- cached elements  -----*/
   const wordDisplay = document.getElementById('WordDisplay');
@@ -26,6 +27,7 @@ function initGame() {
     correctGuesses = [];
     incorrectGuesses = [];
     guessesRemaining = MAX_GUESSES;
+    isGameOver = false;
     displayBlanks();
     updateGuessesRemaining();
     messageElement.textContent = '';
@@ -45,7 +47,15 @@ function displayBlanks() {
   }
  
   // Function to handle the user's guess
-function handleGuess(event) {      
+function handleGuess(event) {   
+    if (isGameOver) {
+        return; // Return early if the game is over //added to stop guesses from registering after game ends.
+      } 
+      // Check if the game is won or lost 
+  if (!isGameOver) {
+    checkWin();
+    checkLoss();
+  }
     const letter = event.target.textContent;
   //the function receives an event object as a parameter, representing the click event triggered by the player. 
   //It extracts the letter that was clicked by accessing the textContent property of the clicked element. This assumes that each letter is enclosed within a <div> element in the keyboard section.
@@ -86,12 +96,14 @@ function updateGuessesRemaining() {
 
 // Function to display a win message
 function displayWinMessage() {
+    isGameOver = true;
     messageElement.textContent = 'Congratulations! You have won the game!';
     playAgainButton.classList.remove('hidden');
   }
   
   // Function to display a loss message
   function displayLossMessage() {
+    isGameOver = true;
     messageElement.textContent = 'Game over! You have run out of guesses.';
     playAgainButton.classList.remove('hidden');
   }
