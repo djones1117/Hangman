@@ -15,3 +15,19 @@ let guessesRemaining = MAX_GUESSES
 
   /*----- functions -----*/
   
+// Function to initialize the game
+function initGame() {
+    displayBlanks();
+    keyboard.addEventListener('click', handleGuess);
+  }
+  
+  // Function to display the blanks for the word
+function displayBlanks() {
+    wordDisplay.innerHTML = '';
+  
+    for (const letter of WORD) {
+      const div = document.createElement('div');
+      div.classList.add('Blank');
+      wordDisplay.appendChild(div);
+    }
+  }
