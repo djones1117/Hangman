@@ -71,27 +71,37 @@ function handleGuess(event) {
 function updateGuessesRemaining() {
     guessesRemaining--;
     if (guessesRemaining === 0) {
-      console.log('Game over! You have run out of guesses.');
-    
+      displayLossMessage();
     }
 }  
+
+// Function to display a win message
+function displayWinMessage() {
+    messageElement.textContent = 'Congratulations! You have won the game!';
+  }
+  
+  // Function to display a loss message
+  function displayLossMessage() {
+    messageElement.textContent = 'Game over! You have run out of guesses.';
+  }
+
 
   // Function to check if the user has won
 function checkWin() {
     const wordArray = Array.from(WORD);
   
     if (wordArray.every(letter => correctGuesses.includes(letter))) {
-      console.log('Congratulations! You have won the game!');
+        displayWinMessage();
     }
   }
 
   // Function to check if the player has lost
 function checkLoss() {
     if (guessesRemaining === 0) {
-      console.log('Game over! You have run out of guesses.');
+        displayLossMessage();
     }
   }
-//note to self. Delete console.logs after render win/loss message works
+
 
   
 
