@@ -87,9 +87,11 @@ function handleGuess(event) {
   
   // Function to update the remaining guesses
 function updateGuessesRemaining() {
+    if (incorrectGuesses.length > 0 && !isGameOver) {
     guessesRemaining--;
+    }
     guessesRemainingElement.textContent = `Guesses Remaining: ${guessesRemaining}`;
-    if (guessesRemaining === 0) {
+  if (guessesRemaining === 0) {
       displayLossMessage();
     }
 }  
