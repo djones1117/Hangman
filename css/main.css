@@ -95,3 +95,6 @@ header {
       .hidden {
         display: none;
       }      
+      #playAgainButton {
+        margin-bottom: 20px;
+      }
