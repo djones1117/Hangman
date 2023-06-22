@@ -14,10 +14,6 @@ let isGameOver = false;    // Game status flag. Added to stop guesses from regis
   const messageElement = document.getElementById('message');
   const guessesRemainingElement = document.getElementById('guessesRemaining');
   const playAgainButton = document.getElementById('playAgainButton');
-  const hangmanImage = document.getElementById("hangmanImage");
-  const hangmanImages = document.querySelectorAll("#hangmanImage img");
-
-
   /*----- event listeners -----*/
   keyboard.addEventListener('click', handleGuess);
   playAgainButton.addEventListener('click', resetGame);
@@ -37,7 +33,6 @@ function initGame() {
     messageElement.textContent = '';
     playAgainButton.classList.add('hidden');
     keyboard.addEventListener('click', handleGuess);
-    displayHangmanImage(0);
   }
   
   // Function to display the blanks for the word
@@ -81,7 +76,6 @@ function handleGuess(event) {
     } else {           
       incorrectGuesses.push(letter);
       updateGuessesRemaining();
-      displayHangmanImage(incorrectGuesses.length);
       checkLoss();
     }
   //If the letter is not in the WORD string, it means the guess is incorrect. The letter is added to the incorrectGuesses array, and the updateGuessesRemaining function is called to update the remaining number of guesses. Then, the checkLoss function is called to check if the user has lost the game.
@@ -152,13 +146,7 @@ function updateWordDisplay() {
 function isAlpha(ch) {
     return /^[A-Z]$/i.test(ch);
   }
-// Function to display the hangman image
-function displayHangmanImage() {
-    
-}
 
-  
-  
   //function that resets the game after a winner or loser has been returned.
   function resetGame() {
     correctGuesses = [];
