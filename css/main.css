@@ -97,4 +97,10 @@ header {
       }      
       #playAgainButton {
         margin-bottom: 20px;
+        color: gray;
+        border-radius: 25%;
+      }
+      #playAgainButton:hover {
+        color: white;
+        background-color: dodgerblue;
       }
